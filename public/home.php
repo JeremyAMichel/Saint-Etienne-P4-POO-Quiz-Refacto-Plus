@@ -18,37 +18,18 @@ $questions = [
 
 $qcm->setQuestions($questions);
 
-var_dump($qcm->getQuestions()[0]);
+$qcmManager = new QcmManager();
+
+require_once './partials/header.php';
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
+<main>
+    <?= $qcmManager->displayQcm($qcm) ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+</main>
 
-<body>
 
-<section>
-    
-    <h2><?= $qcm->getName() ?></h2>
 
-    <?php foreach($qcm->getQuestions() as $question){ ?>
-        <h3><?= $question->getTitle() ?></h3>
-        <ul>
-            <?php foreach($question->getAnswers() as $answer){ ?>
-                <li><?= $answer->getTitle() ?></li>
-            <?php } ?>   
-        </ul>
-
-    <?php } ?>
-</section>
-
-</body>
-
-</html>
+<?php require_once './partials/footer.php';
