@@ -1,12 +1,14 @@
 <?php
 
-final class Qcm  {
-
+final class Qcm
+{
+    private int $id;
     private string $name;
     private array $questions;
 
-    public function __construct(string $name)
+    public function __construct(int $id, string $name)
     {
+        $this->id = $id;
         $this->name = $name;
     }
 
@@ -22,10 +24,8 @@ final class Qcm  {
 
     public function setQuestions(array $questions): self
     {
-        foreach($questions as $question)
-        {
-            if(!$question instanceof Question)
-            {
+        foreach ($questions as $question) {
+            if (!$question instanceof Question) {
                 throw new Exception('Il doit y avoir que des questions dans le tableau');
             }
         }
@@ -34,4 +34,3 @@ final class Qcm  {
         return $this;
     }
 }
-
