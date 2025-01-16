@@ -1,24 +1,9 @@
 <?php
 include_once '../utils/autoloader.php';
 
-$qcm = new Qcm("POO");
-$question1 = new Question("POO signifie :");
+$qcmRepository = new QcmRepository();
 
-$answers1 = [
-    new Answer('Programmation Orientée Objet', true),
-    new Answer('Papillon Onirique Ostentatoire')
-];
-
-$question1->setAnswers($answers1);
-$question1->setExplainationAnswer('La réponse correcte est "Programmation Orientée Objet".');
-
-$questions = [
-    $question1,
-];
-
-$qcm->setQuestions($questions);
-
-$qcmManager = new QcmManager();
+$qcms = $qcmRepository->findAll();
 
 require_once './partials/header.php';
 
@@ -26,7 +11,21 @@ require_once './partials/header.php';
 
 
 <main>
-    <?= $qcmManager->displayQcm($qcm) ?>
+    <h1>Choisis ton quiz !</h1>
+    <ul>
+        <?php
+        /**
+         * @var Qcm $qcm
+         */
+        foreach($qcms as $qcm): ?>
+            <li>
+                <a href="quiz.php?id=<?= $qcm->getId() ?>">
+                    <?= $qcm->getName() ?>
+                </a>
+            </li>
+
+        <?php endforeach ?>
+    </ul>
 
 </main>
 

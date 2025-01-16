@@ -12,6 +12,14 @@ final class Question {
         $this->title = $title;
     }
 
+     /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getTitle(): string
     {
         return $this->title;
@@ -50,4 +58,6 @@ final class Question {
 
     
 
+
+   
 }

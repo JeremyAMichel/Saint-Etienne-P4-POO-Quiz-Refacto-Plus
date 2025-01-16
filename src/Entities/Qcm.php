@@ -12,6 +12,15 @@ final class Qcm
         $this->name = $name;
     }
 
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
     public function getName(): string
     {
         return $this->name;
